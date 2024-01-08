@@ -1,0 +1,17 @@
+Patrón de diseño Builder:
+
+Me interesa este patrón de diseño creacional que nos permite construir objetos complejos paso a paso. El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el mismo código de construcción. 
+
+Debemos definir los pasos comunes de construcción para todas las representaciones disponibles del producto. El patrón Builder sugiere que saques el código de construcción del objeto de su propia clase y lo coloques dentro de objetos independientes llamados constructores.
+
+Debemos declarar estos pasos en la interfaz constructora base. La interfaz Constructora declara pasos de construcción de producto que todos los tipos de objetos constructores tienen en común.
+
+Creamos una clase constructora concreta para cada una de las representaciones de producto e implementamos sus pasos de construcción.
+
+Debemos implementar un método para extraer el resultado de la construcción. La razón por la que este método no se puede declarar dentro de la interfaz constructora es que varios constructores pueden construir productos sin una interfaz común. Por lo tanto, no sabemos cuál será el tipo de retorno para un método como éste. No obstante, si trabajamos con productos de una única jerarquía, el método de extracción puede añadirse sin problemas a la interfaz base.
+
+Creamos una clase directora. La clase Directora define el orden en el que se invocarán los pasos de construcción, por lo que puedes crear y reutilizar configuraciones específicas de los productos. SE puede encapsular varias formas de construir un producto utilizando el mismo objeto constructor.
+
+El código cliente crea tanto el objeto constructor como el director. Antes de que empiece la construcción, el cliente debe pasar un objeto constructor al director. Normalmente, el cliente hace esto sólo una vez, mediante los parámetros del constructor del director. El director utiliza el objeto constructor para el resto de la construcción. Existe una manera alternativa, en la que el objeto constructor se pasa directamente al método de construcción del director.
+
+El resultado de la construcción tan solo se puede obtener directamente del director si todos los productos siguen la misma interfaz. De lo contrario, el cliente deberá extraer el resultado del constructor.
